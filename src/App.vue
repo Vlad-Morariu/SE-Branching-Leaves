@@ -1,28 +1,108 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div  class="wrapper">
+    <title>Branching Leaves</title>
+	<head>  
+		<title>Branching Leaves</title>
+		<link rel="shortcut icon" type="image/png" href="../src/assets/tree_logo.png"/>
+	</head>
+    <div id="header" class="skel-panels-fixed">
+						<nav id="nav">
+							<ul>
+								<li><a href="MainPage.vue">Homepage</a></li>
+								<li><a href="Questionnaire.vue">Find Books</a></li>
+								<li><a href="About.vue">About</a></li>
+							</ul>
+							<img id="logo" src="../src/assets/tree_logo.png" alt="Paris">
+						</nav>
+						
+					</div>
+					
+    <Questionnaire />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Questionnaire from './components/Questionnaire.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Questionnaire
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('./assets/background_1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+
+.wrapper {
+  padding-top: 10em;
+	padding-bottom: 4em;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#logo{
+	float: left;
+	width: 10em;
+	height: 10em;
+}
+
+nav {
+  position: absolute;
+	right: 0;
+	top: 0;
+  width: 100%;
+	cursor: default;
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em;
+
+  align-items: center;
+  background-color: #452C0E;
+  color: #DEB687  ;
+  justify-content: space-between
+  
+}
+
+#nav ul li {
+	display: inline-block;
+	padding: 1em 1.5em;
+	font-size: 1.8em;
+	font-weight: bold;
+	
+}
+
+#nav ul li a {
+	-moz-transition: color 0.35s ease-in-out;
+	-webkit-transition: color 0.35s ease-in-out;
+	-o-transition: color 0.35s ease-in-out;
+	-ms-transition: color 0.35s ease-in-out;
+	transition: color 0.35s ease-in-out;
+	display: inline-block;
+	color: #ddd;
+	color: rgba(255, 255, 255, 0.75);
+	text-decoration: none;
+}
+
+#nav ul li a:hover {
+	color: #4E6C50;
+}
+
+#nav ul li input {
+	display: inline-block;
+	padding-top: 0.7em;
+	padding-bottom: 0.7em;
+	
+}
+
 </style>
