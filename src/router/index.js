@@ -1,20 +1,28 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import MainPage from '../components/MainPage.vue';
-import About from '../components/About.vue';
+
+import { createRouter, createWebHistory } from 'vue-router';
+import BookPage from '../components/BookPage.vue';
 import Questionnaire from '../components/Questionnaire.vue';
 
-Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: MainPage },
-  { path: '/about', component: About },
-  { path: '/contact', component: Questionnaire }
+  {
+    path: '/',
+    name: 'Questionnaire',
+    component: Questionnaire
+  },
+  {
+    path: '/book/:id',
+    name: 'BookPage',
+    component: BookPage,
+    props: true
+  }
 ];
 
-const router = new VueRouter({
-  routes,
-  mode: 'history'
-});
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+
 
 export default router;

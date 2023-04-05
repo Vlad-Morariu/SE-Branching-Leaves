@@ -14,6 +14,16 @@
   </script>
   
   <style>
+  .box {
+	padding: 3em 2em ;
+    margin: 5em 3em;
+	background: #DEB687;
+	text-align: left;
+	border-radius: 3px 3px 6px 6px;
+	border-top-color: #452C0E;
+
+}
+
   h1 {
     font-size: 36px;
     color: #333;

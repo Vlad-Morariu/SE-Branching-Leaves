@@ -25,6 +25,7 @@
             <h2>From what period of time would you like the book to be from?</h2>
             <select name="period" id="period">
                 <option value="AnyPeriod">Any period</option>
+                <option value="-1980">-1980</option>
                 <option value="1980-1990">1980-1990</option>
                 <option value="1990-2000">1990-2000</option>
                 <option value="2000-2010">2000-2010</option>
@@ -48,13 +49,14 @@
                     <option value=">50"> &gt; 50</option>
             </select>
 
-            <button class="button" type="submit">Submit</button>
+            <button  class="button" type="submit" @click="goToBookPage">Submit</button>
 		</div>
     </div>
   </template>
   
   <script>
   import books from '../b2.json'
+
   export default {
     name: 'Questionnaire',
     data(){
@@ -62,24 +64,31 @@
             genres: [],
             authors:[],
             formats:[],
-            languages:[]
+            languages:[],
+
+        }
+    },
+    methods: {
+      goToBookPage(){
+            this.$emit('go-to-book-page')
         }
     },
     mounted() {
-        
+
+
         const genreSet = new Set([]);
         const authorSet = new Set([]);
         const formatSet = new Set([]);
         const languageSet = new Set([]);
 
         for (const bookTitle in books) {
-     if (Object.hasOwnProperty.call(books, bookTitle)) {
-        const book = books[bookTitle];
-        genreSet.add(book.Genre);
-        authorSet.add(book.Author);
-        formatSet.add(book.Type);
-        languageSet.add(book.Language);
-  }
+          if (Object.hasOwnProperty.call(books, bookTitle)) {
+            const book = books[bookTitle];
+            genreSet.add(book.Genre);
+            authorSet.add(book.Author);
+            formatSet.add(book.Type);
+            languageSet.add(book.Language);
+        }
         this.genres=genreSet;
         this.authors=authorSet;
         this.formats=formatSet;

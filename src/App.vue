@@ -9,25 +9,42 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="MainPage.vue">Homepage</a></li>
-								<li><a href="Questionnaire.vue">Find Books</a></li>
+								<li><a href="#" @click.prevent="page = 'Questionnaire'">Find Books</a></li>
 								<li><a href="About.vue">About</a></li>
 							</ul>
-							<img id="logo" src="../src/assets/tree_logo.png" alt="Paris">
+							<img id="logo" src="../src/assets/tree_logo.png" alt="tree">
 						</nav>
 						
 					</div>
+					<div v-if="page ==='Questionnaire'">
+					<Questionnaire @go-to-book-page="page = 'BookPage'"/>
+					</div>
+					<div v-else-if="page ==='BookPage'" :id="'BookPage' + BookPageId">
+					<BookPage :BookPageId="BookPageId"  @go-to-questionnaire="page = 'Questionnaire'"/>
+					</div>
+
 					
-    <Questionnaire />
+					
+
   </div>
 </template>
 
 <script>
 import Questionnaire from './components/Questionnaire.vue'
+import BookPage from './components/BookPage.vue'
 
 export default {
   name: 'App',
+
   components: {
-    Questionnaire
+    Questionnaire,
+	BookPage
+  },
+  data(){
+	return{
+		page:'Questionnaire',
+		BookPageId:9
+	}
   }
 }
 </script>
